@@ -50,12 +50,14 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative z-10 min-h-[100svh] flex flex-col items-center justify-center px-4 sm:px-8 md:px-12 pt-28"
+      className="relative z-10 min-h-[100svh] flex flex-col px-4 sm:px-8 md:px-12"
     >
+      {/* Top spacer to guarantee content stays below the fixed navbar */}
+      <div className="flex-[1.5] min-h-[110px] md:min-h-[140px]" />
 
       {/* ── Two-column hero layout ── */}
       <div
-        className="relative w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center py-7"
+        className="relative w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center py-4 md:py-7"
       >
         {/* ── Left: Text content ── */}
         <motion.div
@@ -212,8 +214,8 @@ export default function Hero() {
           className="order-1 md:order-2 flex justify-center md:justify-end"
         >
           <div
-            className="relative animate-float"
-            style={{ width: 'clamp(240px, 28vw, 340px)', height: 'clamp(240px, 28vw, 340px)' }}
+            className="relative animate-float mx-auto md:mr-0"
+            style={{ width: 'clamp(180px, 45vw, 340px)', height: 'clamp(180px, 45vw, 340px)' }}
           >
             {/* Glow behind image */}
             <div
@@ -259,12 +261,15 @@ export default function Hero() {
         </motion.div>
       </div>
 
+      {/* Bottom spacer to provide padding at the bottom */}
+      <div className="flex-1 min-h-[80px]" />
+
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6 }}
-        className="absolute bottom-10"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
         <Link to="about" smooth={true} duration={500} offset={-80}>
           <motion.div

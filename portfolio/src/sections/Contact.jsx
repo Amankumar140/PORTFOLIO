@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import SectionWrapper from '../components/SectionWrapper';
 import { FaPaperPlane, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import { sendEmail } from '../utils/Email';
+import { sendEmail } from '../utils/email';
 
 const socials = [
   { icon: FaGithub, href: 'https://github.com/Amankumar140/', label: 'GitHub', color: '#e4e4e7' },

@@ -1,16 +1,76 @@
-# React + Vite
+# Portfolio - Alaric (Aman Kumar)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive, and fully responsive 3D portfolio website built with React, Vite, Tailwind CSS, Three.js, and Framer Motion. 
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **3D Interactive Elements**: Built with Three.js and React Three Fiber to provide an immersive experience.
+- **Smooth Animations**: Page transitions and scroll animations powered by Framer Motion.
+- **DSA & Problem Solving Section**: Dynamically fetches and displays live coding statistics from platforms like LeetCode, Codeforces, CodeChef, and HackerRank.
+- **Responsive Design**: Fully optimized for mobile, tablet, and desktop devices.
+- **Modern UI/UX**: Includes glassmorphism effects, neon glows, and a seamless theme toggle (Dark/Light mode).
+- **Working Contact Form**: Integrated with EmailJS for direct messaging without a backend.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend Framework**: React 19, Vite
+- **Styling**: Tailwind CSS v4
+- **3D Graphics**: Three.js, `@react-three/fiber`, `@react-three/drei`
+- **Animations**: Framer Motion, React Scroll
+- **Icons**: React Icons
+- **Email Service**: EmailJS
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+To get a local copy up and running, follow these steps.
+
+### Prerequisites
+
+You need Node.js installed on your machine.
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Amankumar140/PORTFOLIO.git
+   ```
+
+2. Navigate into the project directory:
+   ```bash
+   cd PORTFOLIO/portfolio
+   ```
+
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Set up environment variables for EmailJS. Create a `.env` file in the root of the React project (`portfolio/`) and add:
+   ```env
+   VITE_EMAILJS_SERVICE_ID=your_service_id
+   VITE_EMAILJS_TEMPLATE_ID=your_template_id
+   VITE_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
+
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+6. Open your browser and visit `http://localhost:5173`.
+
+## 📂 Project Structure
+
+- `portfolio/src/components/` - Reusable UI components (Navbar, Cards, etc.)
+- `portfolio/src/sections/` - Major page sections (Hero, About, Skills, Projects, DSA, Contact)
+- `portfolio/src/utils/` - Utility functions and API integrations (e.g., EmailJS)
+- `portfolio/src/assets/` - Static assets like images and 3D models
+
+## 🧑‍💻 Author
+
+**Aman Kumar**
+- GitHub: [@Amankumar140](https://github.com/Amankumar140)
+
+## 📝 License
+
+This project is open-source and available under the MIT License.

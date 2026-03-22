@@ -224,6 +224,8 @@ export default function Projects() {
                   opacity: isFocused ? 1 : 0.5,
                   filter: isFocused ? 'none' : 'blur(1px)',
                   willChange: 'transform, opacity',
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
                 }}
               >
                 <div
@@ -235,7 +237,7 @@ export default function Projects() {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    background: 'var(--glass-bg)',
+                    background: isMobile ? 'var(--mobile-card-bg)' : 'var(--glass-bg)',
                     border: isFocused
                       ? '1px solid rgba(99,102,241,0.25)'
                       : '1px solid var(--glass-border)',
@@ -265,7 +267,7 @@ export default function Projects() {
                       style={{
                         fontSize: '0.68rem',
                         lineHeight: '1.6',
-                        color: 'var(--text-secondary)',
+                        color: 'var(--text-white)',
                         marginBottom: '14px',
                       }}
                     >

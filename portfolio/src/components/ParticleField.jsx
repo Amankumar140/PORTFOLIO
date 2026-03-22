@@ -117,7 +117,6 @@ export default function ParticleField() {
         dpr={[1, 1.5]}
       >
         <Stars mouse={mouse} />
-        <GlowRing mouse={mouse} />
         <FloatingOrb position={[-4, 1.5, -3]} color="#6366f1" speed={0.7} size={0.12} />
         <FloatingOrb position={[4, -1, -4]} color="#a78bfa" speed={0.5} size={0.1} />
         <FloatingOrb position={[0, 2.5, -5]} color="#f472b6" speed={0.9} size={0.08} />

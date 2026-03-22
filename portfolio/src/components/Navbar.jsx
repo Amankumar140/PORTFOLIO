@@ -147,8 +147,13 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden glass overflow-hidden"
-            style={{ borderTop: '1px solid var(--glass-border)' }}
+            className="md:hidden overflow-hidden"
+            style={{ 
+              background: 'var(--mobile-card-bg)',
+              borderBottom: '1px solid var(--glass-border)',
+              backdropFilter: 'blur(4px)',
+              WebkitBackdropFilter: 'blur(4px)',
+            }}
           >
             <div className="flex flex-col items-center gap-7 py-10">
               {navLinks.map((link, i) => (
@@ -165,7 +170,7 @@ export default function Navbar() {
                     offset={-80}
                     onClick={() => setIsOpen(false)}
                     className="cursor-pointer text-lg font-medium tracking-wide transition-colors duration-300 hover:text-[var(--accent-light)]"
-                    style={{ color: 'var(--text-secondary)' }}
+                    style={{ color: 'var(--text-primary)' }}
                   >
                     {link.name}
                   </Link>

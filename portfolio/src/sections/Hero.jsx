@@ -50,12 +50,12 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative z-10 min-h-[100svh] flex flex-col items-center justify-center px-4 sm:px-8 md:px-12 pt-28 lg:pt-0"
+      className="relative z-10 min-h-[100svh] flex flex-col items-center px-4 sm:px-8 md:px-12 pt-[140px] md:pt-[120px] pb-24"
     >
 
       {/* ── Two-column hero layout ── */}
       <div
-        className="relative w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-24 md:mt-0 py-7"
+        className="relative w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center my-auto py-7"
       >
         {/* ── Left: Text content ── */}
         <motion.div

@@ -148,6 +148,23 @@ function SkillNode({ skill, index, total, hovered, setHovered }) {
   );
 }
 
+/* ── Auto-rotating Group for Mobile ── */
+function RotatingGroup({ isMobile, children }) {
+  const groupRef = useRef();
+  useFrame(({ clock }) => {
+    if (isMobile && groupRef.current) {
+      // Rotate the group mimicking OrbitControls autoRotateSpeed 1.2
+      groupRef.current.rotation.y = clock.elapsedTime * 0.2;
+    }
+  });
+
+  return (
+    <group ref={groupRef} scale={isMobile ? 0.7 : 1} position={[0, isMobile ? 0.5 : 0, 0]}>
+      {children}
+    </group>
+  );
+}
+
 /* ── 3D Scene ── */
 function SkillGlobe() {
   const [hovered, setHovered] = useState(null);
@@ -168,7 +185,7 @@ function SkillGlobe() {
       dpr={[1, 1.5]}
     >
       <ambientLight intensity={0.3} />
-      <group scale={isMobile ? 0.7 : 1} position={[0, isMobile ? 0.5 : 0, 0]}>
+      <RotatingGroup isMobile={isMobile}>
         <Globe />
         {skills.map((skill, i) => (
           <SkillNode
@@ -180,16 +197,17 @@ function SkillGlobe() {
             setHovered={setHovered}
           />
         ))}
-      </group>
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-        enableRotate={!isMobile}
-        autoRotate
-        autoRotateSpeed={1.2}
-        minPolarAngle={Math.PI / 3}
-        maxPolarAngle={(2 * Math.PI) / 3}
-      />
+      </RotatingGroup>
+      {!isMobile && (
+        <OrbitControls
+          enableZoom={false}
+          enablePan={false}
+          autoRotate
+          autoRotateSpeed={1.2}
+          minPolarAngle={Math.PI / 3}
+          maxPolarAngle={(2 * Math.PI) / 3}
+        />
+      )}
     </Canvas>
   );
 }

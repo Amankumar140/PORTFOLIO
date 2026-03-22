@@ -25,8 +25,13 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="fixed top-0 left-0 w-full z-50 glass"
-      style={{ borderBottom: '1px solid var(--glass-border)' }}
+      className={`fixed top-0 left-0 w-full z-50 ${!isOpen ? 'glass' : ''}`}
+      style={{ 
+        borderBottom: '1px solid var(--glass-border)',
+        background: isOpen ? (isDark ? 'rgba(10, 10, 15, 0.75)' : 'rgba(255, 255, 255, 0.85)') : undefined,
+        backdropFilter: isOpen ? 'blur(12px)' : undefined,
+        WebkitBackdropFilter: isOpen ? 'blur(12px)' : undefined,
+      }}
     >
       <div className="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
         {/* Logo */}
@@ -151,8 +156,8 @@ export default function Navbar() {
             style={{ 
               background: isDark ? 'rgba(10, 10, 15, 0.75)' : 'rgba(255, 255, 255, 0.85)',
               borderTop: '1px solid var(--glass-border)',
-              backdropFilter: 'blur(24px)',
-              WebkitBackdropFilter: 'blur(24px)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
             }}
           >
             <div className="flex flex-col items-center justify-center gap-8 h-[calc(100vh-80px)] pb-16">

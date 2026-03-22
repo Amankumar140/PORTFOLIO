@@ -1,4 +1,4 @@
-import { useRef, useState, useMemo } from 'react';
+import { useRef, useState, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Html } from '@react-three/drei';
 import { motion } from 'framer-motion';
@@ -151,11 +151,19 @@ function SkillNode({ skill, index, total, hovered, setHovered }) {
 /* ── 3D Scene ── */
 function SkillGlobe() {
   const [hovered, setHovered] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <Canvas
       camera={{ position: [0, 0, 7], fov: 50 }}
-      style={{ height: 'clamp(375px, 55vh, 420px)', width: '100%' }}
+      style={{ height: 'clamp(375px, 55vh, 420px)', width: '100%', touchAction: 'pan-y' }}
       gl={{ alpha: true, antialias: false }}
       dpr={[1, 1.5]}
     >
@@ -174,6 +182,7 @@ function SkillGlobe() {
       <OrbitControls
         enableZoom={false}
         enablePan={false}
+        enableRotate={!isMobile}
         autoRotate
         autoRotateSpeed={1.2}
         minPolarAngle={Math.PI / 3}

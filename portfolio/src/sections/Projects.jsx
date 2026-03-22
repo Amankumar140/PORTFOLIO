@@ -202,7 +202,7 @@ export default function Projects() {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    background: isMobile ? 'rgba(10, 10, 30, 0.85)' : 'var(--glass-bg)',
+                    background: 'var(--glass-bg)',
                     border: isFocused
                       ? '1px solid rgba(99,102,241,0.25)'
                       : '1px solid var(--glass-border)',

@@ -55,8 +55,7 @@ export default function Hero() {
 
       {/* ── Two-column hero layout ── */}
       <div
-        className="relative w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
-        style={{ padding: '28px 0' }}
+        className="relative w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-24 md:mt-0 py-7"
       >
         {/* ── Left: Text content ── */}
         <motion.div

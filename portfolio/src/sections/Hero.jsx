@@ -111,7 +111,7 @@ export default function Hero() {
               color: 'var(--text-secondary)',
             }}
           >
-            Final Year Engineering Student &nbsp;|&nbsp; Software Developer
+             Engineering Student &nbsp;|&nbsp; Software Developer
           </motion.p>
 
           {/* Typing animation */}

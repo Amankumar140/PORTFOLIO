@@ -50,14 +50,13 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative z-10 w-full min-h-[100svh] flex flex-col pt-[var(--nav-height,80px)]"
+      className="relative z-10 min-h-[100svh] flex flex-col items-center justify-center px-4 sm:px-8 md:px-12 pt-28"
     >
 
       {/* ── Two-column hero layout ── */}
-      <div className="flex-1 w-full flex flex-col justify-center items-center px-4 sm:px-8 md:px-12 py-10 md:py-16 my-auto">
-        <div
-          className="relative w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
-        >
+      <div
+        className="relative w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center py-7"
+      >
         {/* ── Left: Text content ── */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -258,7 +257,6 @@ export default function Hero() {
             </div>
           </div>
         </motion.div>
-      </div>
       </div>
 
       {/* Scroll indicator */}

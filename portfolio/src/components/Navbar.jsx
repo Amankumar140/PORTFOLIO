@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
@@ -19,22 +19,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('hero');
   const { isDark, toggleTheme } = useTheme();
-  const navRef = useRef(null);
-
-  useEffect(() => {
-    const updateNavHeight = () => {
-      if (navRef.current) {
-        document.documentElement.style.setProperty('--nav-height', `${navRef.current.offsetHeight}px`);
-      }
-    };
-    updateNavHeight();
-    window.addEventListener('resize', updateNavHeight);
-    return () => window.removeEventListener('resize', updateNavHeight);
-  }, []);
 
   return (
     <motion.nav
-      ref={navRef}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -46,7 +33,7 @@ export default function Navbar() {
         WebkitBackdropFilter: isOpen ? 'blur(12px)' : undefined,
       }}
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 md:py-5 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 h-16 md:h-14 flex items-center justify-between">
         {/* Logo */}
         <Link
           to="hero"
@@ -173,7 +160,7 @@ export default function Navbar() {
               WebkitBackdropFilter: 'blur(12px)',
             }}
           >
-            <div className="flex flex-col items-center justify-center gap-8 h-[calc(100vh-80px)] pb-16">
+            <div className="flex flex-col items-center justify-center gap-8 h-[calc(100vh-64px)] pb-16">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.to}

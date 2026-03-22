@@ -80,7 +80,7 @@ function GlowRing({ mouse }) {
 
   return (
     <mesh ref={mesh} position={[0, 0, -3]}>
-      <torusGeometry args={[3, 0.02, 16, 100]} />
+      <torusGeometry args={[3, 0.02, 10, 48]} />
       <meshBasicMaterial color="#6366f1" transparent opacity={0.25} />
     </mesh>
   );
@@ -113,7 +113,8 @@ export default function ParticleField() {
       <Canvas
         camera={{ position: [0, 0, 6], fov: 55 }}
         style={{ background: 'transparent' }}
-        gl={{ alpha: true, antialias: true }}
+        gl={{ alpha: true, antialias: false }}
+        dpr={[1, 1.5]}
       >
         <Stars mouse={mouse} />
         <GlowRing mouse={mouse} />

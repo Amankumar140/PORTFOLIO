@@ -190,6 +190,7 @@ export default function Projects() {
                   transition: 'opacity 0.5s ease, filter 0.5s ease',
                   opacity: isFocused ? 1 : 0.5,
                   filter: isFocused ? 'none' : 'blur(1px)',
+                  willChange: 'transform, opacity',
                 }}
               >
                 <div
@@ -201,12 +202,12 @@ export default function Projects() {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    background: 'var(--glass-bg)',
+                    background: isMobile ? 'rgba(10, 10, 30, 0.85)' : 'var(--glass-bg)',
                     border: isFocused
                       ? '1px solid rgba(99,102,241,0.25)'
                       : '1px solid var(--glass-border)',
-                    backdropFilter: 'blur(16px)',
-                    WebkitBackdropFilter: 'blur(16px)',
+                    backdropFilter: isMobile ? 'blur(4px)' : 'blur(16px)',
+                    WebkitBackdropFilter: isMobile ? 'blur(4px)' : 'blur(16px)',
                     boxShadow: isFocused
                       ? '0 0 30px rgba(99,102,241,0.15), 0 8px 32px rgba(0,0,0,0.2)'
                       : '0 4px 20px rgba(0,0,0,0.15)',

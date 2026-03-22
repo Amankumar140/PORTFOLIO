@@ -55,7 +55,7 @@ function Globe() {
 
   return (
     <mesh ref={meshRef}>
-      <sphereGeometry args={[2.2, 28, 28]} />
+      <sphereGeometry args={[2.2, 16, 16]} />
       <meshBasicMaterial
         color="#6366f1"
         wireframe
@@ -96,7 +96,7 @@ function SkillNode({ skill, index, total, hovered, setHovered }) {
     <group ref={groupRef} position={position}>
       {/* Glowing sphere behind the icon */}
       <mesh>
-        <sphereGeometry args={[isHovered ? 0.22 : 0.16, 16, 16]} />
+        <sphereGeometry args={[isHovered ? 0.22 : 0.16, 12, 12]} />
         <meshBasicMaterial
           color={skill.color}
           transparent
@@ -156,7 +156,8 @@ function SkillGlobe() {
     <Canvas
       camera={{ position: [0, 0, 7], fov: 50 }}
       style={{ height: 'clamp(375px, 55vh, 420px)', width: '100%' }}
-      gl={{ alpha: true }}
+      gl={{ alpha: true, antialias: false }}
+      dpr={[1, 1.5]}
     >
       <ambientLight intensity={0.3} />
       <Globe />

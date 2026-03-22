@@ -1,4 +1,4 @@
-# Portfolio - Alaric (Aman Kumar)
+# Portfolio - Aman Kumar
 
 A modern, interactive, and fully responsive 3D portfolio website built with React, Vite, Tailwind CSS, Three.js, and Framer Motion. 
 

@@ -233,7 +233,7 @@ export default function Hero() {
               >
                 {/* Replace src with your actual profile photo */}
                 <img
-                  src={isDark ? '/picDarkMode.jpeg' : '/picLightMode.jpeg'}
+                  src={isDark ? '/picDarkMode.jpeg' : '/picLightMode.png'}
                   alt="Aman Kumar"
                   className="w-full h-full object-cover rounded-full"
                   style={{ opacity: 0.9 }}

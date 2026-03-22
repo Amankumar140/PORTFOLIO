@@ -50,7 +50,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 md:px-12"
+      className="relative z-10 min-h-[100svh] flex flex-col items-center justify-center px-4 sm:px-8 md:px-12 pt-28 lg:pt-0"
     >
 
       {/* ── Two-column hero layout ── */}

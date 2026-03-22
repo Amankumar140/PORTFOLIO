@@ -168,17 +168,19 @@ function SkillGlobe() {
       dpr={[1, 1.5]}
     >
       <ambientLight intensity={0.3} />
-      <Globe />
-      {skills.map((skill, i) => (
-        <SkillNode
-          key={skill.name}
-          skill={skill}
-          index={i}
-          total={skills.length}
-          hovered={hovered}
-          setHovered={setHovered}
-        />
-      ))}
+      <group scale={isMobile ? 0.7 : 1} position={[0, isMobile ? 0.5 : 0, 0]}>
+        <Globe />
+        {skills.map((skill, i) => (
+          <SkillNode
+            key={skill.name}
+            skill={skill}
+            index={i}
+            total={skills.length}
+            hovered={hovered}
+            setHovered={setHovered}
+          />
+        ))}
+      </group>
       <OrbitControls
         enableZoom={false}
         enablePan={false}

@@ -99,6 +99,11 @@ export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  // Swipe logic states
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchEndX, setTouchEndX] = useState(null);
+
   const timerRef = useRef(null);
   const total = projects.length;
   const angleStep = 360 / total;
@@ -109,6 +114,31 @@ export default function Projects() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const onTouchStart = (e) => {
+    setTouchEndX(null);
+    setTouchStartX(e.targetTouches[0].clientX);
+    setIsPaused(true); // Pause auto-rotation on touch
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    setIsPaused(false); // Resume after swipe
+    if (!touchStartX || !touchEndX) return;
+    const distance = touchStartX - touchEndX;
+    const minSwipeDistance = 50;
+    
+    if (distance > minSwipeDistance) {
+      // Swiped left (Next)
+      setActiveIndex((prev) => (prev + 1) % total);
+    } else if (distance < -minSwipeDistance) {
+      // Swiped right (Prev)
+      setActiveIndex((prev) => (prev === 0 ? total - 1 : prev - 1));
+    }
+  };
 
   const CARD_WIDTH = isMobile ? 260 : 320;
   const CARD_HEIGHT = isMobile ? 320 : 280;
@@ -150,6 +180,9 @@ export default function Projects() {
       <div
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
         style={{
           perspective: '1200px',
           display: 'flex',

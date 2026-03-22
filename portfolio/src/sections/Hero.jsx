@@ -50,21 +50,20 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative z-10 min-h-[100svh] flex flex-col px-4 sm:px-8 md:px-12"
+      className="relative z-10 w-full min-h-[100svh] flex flex-col px-4 sm:px-8 md:px-12"
     >
-      {/* Top spacer to guarantee content stays below the fixed navbar */}
-      <div className="flex-[1.5] min-h-[110px] md:min-h-[140px]" />
+      {/* ── Top Spacer: absolutely guarantees content clears the fixed navbar ── */}
+      <div className="flex-[1] min-h-[110px] md:min-h-[140px]" />
 
       {/* ── Two-column hero layout ── */}
-      <div
-        className="relative w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center py-4 md:py-7"
-      >
+      <div className="relative w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+        
         {/* ── Left: Text content ── */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="order-2 md:order-1 text-center md:text-left"
+          className="order-2 md:order-1 flex flex-col items-center text-center md:pl-16 lg:pl-32"
         >
           {/* Greeting chip */}
           <motion.div
@@ -91,7 +90,7 @@ export default function Hero() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="font-extrabold leading-tight"
             style={{
-              fontSize: 'clamp(2.8rem, 6vw, 4.5rem)',
+              fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
               marginBottom: '12px',
               color: 'var(--text-primary)',
             }}
@@ -107,7 +106,7 @@ export default function Hero() {
             transition={{ delay: 0.7 }}
             className="font-medium tracking-wide"
             style={{
-              fontSize: 'clamp(0.85rem, 1.8vw, 1.15rem)',
+              fontSize: 'clamp(0.8rem, 1.5vw, 1rem)',
               marginBottom: '24px',
               color: 'var(--text-secondary)',
             }}
@@ -120,13 +119,13 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
-            className="flex items-center justify-center md:justify-start"
+            className="flex items-center justify-center"
             style={{ minHeight: '44px', marginBottom: '32px' }}
           >
             <span
               className="font-bold"
               style={{
-                fontSize: 'clamp(1.3rem, 3vw, 2rem)',
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.6rem)',
                 color: 'var(--accent-light)',
               }}
             >
@@ -148,7 +147,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1 }}
-            className="flex flex-wrap justify-center md:justify-start"
+            className="flex flex-wrap justify-center"
             style={{ gap: '16px' }}
           >
             {/* View Projects */}
@@ -211,7 +210,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: 50, scale: 0.9 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="order-1 md:order-2 flex justify-center md:justify-end"
+          className="order-1 md:order-2 flex justify-center md:justify-end md:translate-x-8 lg:translate-x-16"
         >
           <div
             className="relative animate-float mx-auto md:mr-0"
@@ -261,8 +260,8 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Bottom spacer to provide padding at the bottom */}
-      <div className="flex-1 min-h-[80px]" />
+      {/* ── Bottom Spacer ── */}
+      <div className="flex-[1] min-h-[80px]" />
 
       {/* Scroll indicator */}
       <motion.div

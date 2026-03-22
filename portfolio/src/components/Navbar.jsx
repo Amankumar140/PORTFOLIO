@@ -144,23 +144,23 @@ export default function Navbar() {
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: '100vh' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className="md:hidden overflow-hidden"
             style={{ 
-              background: 'var(--mobile-card-bg)',
-              borderBottom: '1px solid var(--glass-border)',
-              backdropFilter: 'blur(4px)',
-              WebkitBackdropFilter: 'blur(4px)',
+              background: isDark ? 'rgba(10, 10, 15, 0.75)' : 'rgba(255, 255, 255, 0.85)',
+              borderTop: '1px solid var(--glass-border)',
+              backdropFilter: 'blur(24px)',
+              WebkitBackdropFilter: 'blur(24px)',
             }}
           >
-            <div className="flex flex-col items-center gap-7 py-10">
+            <div className="flex flex-col items-center justify-center gap-8 h-[calc(100vh-80px)] pb-16">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.to}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
                 >
                   <Link
@@ -168,11 +168,21 @@ export default function Navbar() {
                     smooth={true}
                     duration={500}
                     offset={-80}
+                    spy={true}
+                    onSetActive={() => setActiveLink(link.to)}
                     onClick={() => setIsOpen(false)}
-                    className="cursor-pointer text-lg font-medium tracking-wide transition-colors duration-300 hover:text-[var(--accent-light)]"
-                    style={{ color: 'var(--text-primary)' }}
+                    className="cursor-pointer text-2xl font-semibold tracking-wide transition-colors duration-300 relative flex flex-col items-center"
+                    style={{ color: activeLink === link.to ? 'var(--accent-light)' : 'var(--text-primary)' }}
                   >
                     {link.name}
+                    {activeLink === link.to && (
+                      <motion.span
+                        layoutId="mobile-nav-underline"
+                        className="absolute -bottom-2 w-1/2 h-[3px] rounded-full"
+                        style={{ background: 'var(--accent-light)' }}
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
                   </Link>
                 </motion.div>
               ))}

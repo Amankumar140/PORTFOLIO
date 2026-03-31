@@ -23,12 +23,12 @@ const SYSTEM_CHECKS = [
   { label: 'React', delay: 0.55 },
   { label: 'Node.js', delay: 0.75 },
   { label: 'MongoDB', delay: 0.95 },
-  { label: 'TypeScript', delay: 1.15 },
+  
 ];
 
 /* ─── Phase 3: Boot log lines ─── */
 const BOOT_LINES = [
-  { text: '> booting alaric.dev', delay: 0.5 },
+  { text: '> booting aman.dev', delay: 0.5 },
   { text: '> compiling identity...', delay: 0.8 },
   { text: '> loading projects', delay: 1.1, hasBar: true },
   { text: '> ready_', delay: 1.7, isReady: true },

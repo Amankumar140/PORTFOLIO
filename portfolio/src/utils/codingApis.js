@@ -153,12 +153,11 @@ export async function fetchGeeksForGeeksStats(username) {
 
   try {
     const gfgPath = `/api-get/user-profile-info/?handle=${username}`;
-    const isDev = import.meta.env.DEV;
 
-    // In dev, Vite proxy handles CORS; in prod, use corsproxy.io
-    const url = isDev
-      ? `/gfg-api${gfgPath}`
-      : `https://corsproxy.io/?url=${encodeURIComponent(`https://authapi.geeksforgeeks.org${gfgPath}`)}`;
+    // Always use the relative proxy path /gfg-api.
+    // In dev: Vite's server.proxy handles this. 
+    // In prod: vercel.json / netlify.toml handles this.
+    const url = `/gfg-api${gfgPath}`;
 
     const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);

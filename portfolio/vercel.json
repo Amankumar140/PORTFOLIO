@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/gfg-api/(.*)",
+      "destination": "https://authapi.geeksforgeeks.org/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

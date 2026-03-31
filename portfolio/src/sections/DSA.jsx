@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import SectionWrapper from '../components/SectionWrapper';
-import { SiLeetcode, SiCodeforces, SiHackerrank, SiCodechef } from 'react-icons/si';
+import { SiLeetcode, SiCodeforces, SiHackerrank, SiCodechef, SiGeeksforgeeks } from 'react-icons/si';
 import { FaGithub, FaExternalLinkAlt, FaStar, FaTrophy } from 'react-icons/fa';
 import {
   fetchLeetCodeStats,
   fetchCodeforcesStats,
   fetchGitHubStats,
   fetchCodeChefStats,
+  fetchGeeksForGeeksStats,
 } from '../utils/codingApis';
 
 /* ── Animated counter ── */
@@ -257,20 +258,23 @@ export default function DSA() {
   const [cfData, setCfData] = useState(null);
   const [ghData, setGhData] = useState(null);
   const [ccData, setCcData] = useState(null);
+  const [gfgData, setGfgData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadAll() {
-      const [lc, cf, gh, cc] = await Promise.allSettled([
+      const [lc, cf, gh, cc, gfg] = await Promise.allSettled([
         fetchLeetCodeStats('amankumar140'),
         fetchCodeforcesStats('amankr196'),
         fetchGitHubStats('Amankumar140'),
         fetchCodeChefStats('amankr_20'),
+        fetchGeeksForGeeksStats('aman146mel')
       ]);
       setLcData(lc.status === 'fulfilled' ? lc.value : null);
       setCfData(cf.status === 'fulfilled' ? cf.value : null);
       setGhData(gh.status === 'fulfilled' ? gh.value : null);
       setCcData(cc.status === 'fulfilled' ? cc.value : null);
+      setGfgData(gfg.status === 'fulfilled' ? gfg.value : null);
       setLoading(false);
     }
     loadAll();
@@ -344,6 +348,20 @@ export default function DSA() {
         { label: 'Language', value: 'C++' },
       ],
       badge: '4★ C++',
+    },
+    {
+      name: 'GeeksforGeeks',
+      icon: SiGeeksforgeeks,
+      color: '#308D46',
+      username: 'aman146mel',
+      link: 'https://www.geeksforgeeks.org/profile/aman146mel',
+      loading,
+      stats: [
+        { label: 'Coding Score', value: gfgData?.codingScore ?? '—' },
+        { label: 'Problems Solved', value: gfgData?.totalProblemsSolved ?? '—' },
+        { label: 'Institute Rank', value: gfgData?.instituteRank ? `#${gfgData.instituteRank}` : '—' },
+        { label: 'Longest Streak', value: gfgData?.longestStreak ? `${gfgData.longestStreak} days` : '—' },
+      ],
     },
     {
       name: 'GitHub',

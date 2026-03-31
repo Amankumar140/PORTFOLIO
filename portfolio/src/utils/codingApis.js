@@ -137,3 +137,51 @@ export async function fetchCodeChefStats(_username) {
     problemsSolved: '100+',
   };
 }
+
+/* ── GeeksForGeeks ── */
+
+/**
+ * Fetch GeeksForGeeks user stats via GFG's internal profile API.
+ * In dev: uses Vite proxy (/gfg-api) to bypass CORS.
+ * In prod: uses corsproxy.io as a fallback.
+ * Returns { codingScore, totalProblemsSolved, instituteRank, longestStreak, monthlyScore }
+ */
+export async function fetchGeeksForGeeksStats(username) {
+  const cacheKey = `gfg_stats_${username}`;
+  const cached = getCached(cacheKey);
+  if (cached) return cached;
+
+  try {
+    const gfgPath = `/api-get/user-profile-info/?handle=${username}`;
+    const isDev = import.meta.env.DEV;
+
+    // In dev, Vite proxy handles CORS; in prod, use corsproxy.io
+    const url = isDev
+      ? `/gfg-api${gfgPath}`
+      : `https://corsproxy.io/?url=${encodeURIComponent(`https://authapi.geeksforgeeks.org${gfgPath}`)}`;
+
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const json = await res.json();
+
+    // Dev proxy returns the JSON directly; prod proxy may also return directly
+    const data = json?.data ?? json;
+    if (!data?.score && !data?.total_problems_solved) throw new Error('No profile data');
+
+    const result = {
+      codingScore: data.score ?? null,
+      totalProblemsSolved: data.total_problems_solved ?? null,
+      instituteRank: data.institute_rank ?? null,
+      monthlyScore: data.monthly_score ?? null,
+      longestStreak: data.pod_solved_longest_streak ?? null,
+      currentStreak: data.pod_solved_current_streak ?? null,
+    };
+
+    setCache(cacheKey, result);
+    return result;
+  } catch (err) {
+    console.warn('GFG API error:', err);
+    return null;
+  }
+}
